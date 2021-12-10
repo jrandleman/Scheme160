@@ -1,0 +1,69 @@
+// Author: Jordan Randleman - Type.Number
+// Purpose:
+//    Number primitive type, Java "double"s under the hood.
+
+package Type;
+import java.util.Objects;
+
+public class Number extends Datum {
+  ////////////////////////////////////////////////////////////////////////////
+  // Value Field
+  public double value = 0.0;
+
+
+  ////////////////////////////////////////////////////////////////////////////
+  // Constructor
+  public Number(double d) {
+    value = d;
+  }
+
+
+  ////////////////////////////////////////////////////////////////////////////
+  // Type
+  public java.lang.String type() {
+    return "number";
+  }
+
+
+  ////////////////////////////////////////////////////////////////////////////
+  // Truthiness
+  public boolean isTruthy() {
+    return true;
+  }
+
+
+  ////////////////////////////////////////////////////////////////////////////
+  // Equality
+  public boolean eq(Object o) {
+    return o instanceof Number && ((Number)o).value == value;
+  }
+
+  public boolean equals(Object o) {
+    return eq(o);
+  }
+
+
+  ////////////////////////////////////////////////////////////////////////////
+  // Hash code
+  public int hashCode() {
+    return Objects.hash(type(),value);
+  }
+
+
+  ////////////////////////////////////////////////////////////////////////////
+  // Serialization
+  public java.lang.String display() {
+    return Double.toString(value);
+  }
+
+  public java.lang.String write() {
+    return display();
+  }
+
+
+  ////////////////////////////////////////////////////////////////////////////
+  // Copying
+  public Datum copy() {
+    return this;
+  }
+}
